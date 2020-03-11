@@ -35,14 +35,14 @@ module.exports = function draw(gd, opts) {
     var clipId = 'legend' + fullLayout._uid;
     var layer;
 
-    // Check whether this is the main legend (ie. called without any opts)
-    if(!opts) {
-        opts = fullLayout.legend || {};
+    if(!opts) opts = fullLayout.legend || {};
+
+    if(opts._unifiedHover) {
+        clipId += '-hover';
+        layer = opts.layer;
+    } else { // is the main legend
         opts._main = true;
         layer = fullLayout._infolayer;
-    } else {
-        layer = opts.layer;
-        clipId += '-hover';
     }
 
     if(!layer) return;

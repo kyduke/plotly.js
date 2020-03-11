@@ -981,6 +981,7 @@ function createHoverText(hoverData, opts, gd) {
             legendOpts.entries.push([pt]);
         }
         legendOpts.layer = container;
+        legendOpts._unifiedHover = true;
 
         // Draw unified hover label
         legendDraw(gd, legendOpts);
