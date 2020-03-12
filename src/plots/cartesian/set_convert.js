@@ -598,16 +598,16 @@ module.exports = function setConvert(ax, fullLayout) {
                     ax._B.push(ax._B[ax._B.length - 1] - ax._m2 * (brk.max - brk.min) * signAx);
                 }
 
-                if(signAx === -1) {
-                    ax._B.reverse();
-                }
-
                 // fill pixel (i.e. 'p') min/max here,
                 // to not have to loop through the _breaks twice during `p2l`
                 for(i = 0; i < ax._breaks.length; i++) {
                     brk = ax._breaks[i];
                     brk.pmin = l2p(brk.min);
                     brk.pmax = l2p(brk.max);
+                }
+
+                if(signAx === -1) {
+                    ax._B.reverse();
                 }
             }
         }
